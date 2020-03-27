@@ -509,7 +509,7 @@ for s in " \n0123456789":
 
 #genetic code table
 from collections import defaultdict
-table = {}
+table = defaultdict()
 #Inverse table for the standard genetic code (compressed using IUPAC notation) 
 # dup
 # Asn or Asp / B  AAU, AAC; GAU, GAC
@@ -561,6 +561,7 @@ for t in tt.split("\n"):
 # stick tog
 # translation - amino acid - fold proteins
  
+
 #amino acid chain
 amino_acid = []
 for i in range(3):
