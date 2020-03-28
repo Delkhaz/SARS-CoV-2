@@ -58,14 +58,14 @@ for t in tt.split("\n"):
 # stick tog
 # translation - amino acid - fold proteins
  
-
 #amino acid chain
+"""
 amino_acid = []
-for i in range(3):
-    for j in range(i,len(sars_cov)-3,3):
+for readingFrame in range(3):
+    for j in range(readingFrame,len(sars_cov)-3,3):
         amino_acid.append(table[sars_cov[j:j+3]])
 amino_acid = ''.join(amino_acid)
-
+"""
 
 #one for example 
 #membrane glycoprotein
@@ -77,7 +77,7 @@ IKDLPKEITVATSRTLSYYKLGASQRVAGDSGFAAYSRYRIGNYKLNTDHSSSSDNIA
 LLVQ
 """
 # part of membrane glycoprotein
-print(amino_acid.find("MADSNGTITVEELKKLLEQWNLVIGFLFLTWICLLQFAYANRNR"))
+#print(amino_acid.find("MADSNGTITVEELKKLLEQWNLVIGFLFLTWICLLQFAYANRNR"))
 
 #list(filter(lambda x: len(x) > 100, amino_acid.split("STOP")))
 
@@ -86,6 +86,25 @@ print(amino_acid.find("MADSNGTITVEELKKLLEQWNLVIGFLFLTWICLLQFAYANRNR"))
 # using our genetic code table to break list proteins like in above line ^
 # https://www.khanacademy.org/science/biology/gene-expression-central-dogma/central-dogma-transcription/a/the-genetic-code-discovery-and-properties
 #proteins
-for i in amino_acid.split("STOP"):
-    print(i)
+#for i in amino_acid.split("STOP"):
+#    print(i)
+
+
+def translate(seq):
+  amino_acid = []
+  for i in range(0,len(seq)-2, 3):
+    amino_acid.append(table[seq[i:i+3]])
+  amino_acid = ''.join(amino_acid)
+  return amino_acid
+
+#amino_acid = decode(sars_cov[1:]) + decode(sars_cov[2:])
+
+
+
+#https://www.ncbi.nlm.nih.gov/protein/1796318597
+#orf1ab polyprotein
+orf1ab_polyprotein = translate(sars_cov[266-1:13468])
+spike_glycoprotein = translate(sars_cov[21563-1:25384])
+
+
 
